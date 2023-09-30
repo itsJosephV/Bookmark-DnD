@@ -9,7 +9,7 @@ const BookmarkList = ({ bookmarks, handleDelete }) => {
         <h1 className="text-2xl font-semibold">Your list</h1>
       </div>
       {bookmarks.length > 0 ? (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-3">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-3">
           {bookmarks.map((bookmark) => (
             <BookmarkCard
               key={bookmark.id}
@@ -17,7 +17,7 @@ const BookmarkList = ({ bookmarks, handleDelete }) => {
               handleDelete={handleDelete}
             />
           ))}
-        </ul>
+        </div>
       ) : (
         <EmptyList />
       )}
