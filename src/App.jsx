@@ -55,7 +55,7 @@ function App() {
           <small>Add Bookmark</small>
         </button>
       </div>
-      <BookmarkList bookmarks={bookmarks} handleDelete={handleDelete} />
+      <BookmarkList bookmarks={bookmarks} handleDelete={handleDelete} setBookmarks={setBookmarks} />
       <BookmarkModal addBookmark={addBookmark} modal={modal} setModal={setModal} />
     </div>
     </>
