@@ -32,7 +32,7 @@ const BookmarkCard = ({ bookmark, handleDelete }) => {
   return (
     <div
       style={style}
-      className="relative mb-7"
+      className="relative mb-10"
       {...attributes}
       {...listeners}
       ref={setNodeRef}

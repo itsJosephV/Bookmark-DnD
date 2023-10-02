@@ -4,8 +4,8 @@ import {
   DndContext,
   closestCenter,
   PointerSensor,
-  MouseSensor,
-  TouchSensor,
+  // MouseSensor,
+  // TouchSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -16,7 +16,14 @@ import {
 } from "@dnd-kit/sortable";
 
 const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
-  // const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+  
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 10,
+      },
+    })
+  );
 
   const handleDragEnd = (e) => {
     const { active, over } = e;
@@ -34,7 +41,7 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
       </div>
       {bookmarks.length > 0 ? (
         <DndContext
-          // sensors={sensors}
+          sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
         >
