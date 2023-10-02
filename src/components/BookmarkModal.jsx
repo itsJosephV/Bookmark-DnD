@@ -18,7 +18,7 @@ const BookmarkModal = ({ modal, addBookmark, setModal }) => {
   };
 
   const handleToReadCB = () => {
-    setBookmarkToRead(true);
+    setBookmarkToRead(!bookmarkToRead);
   };
 
   const handleBmSubmit = (e) => {
