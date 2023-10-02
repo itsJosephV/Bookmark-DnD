@@ -27,7 +27,7 @@ const BookmarkCard = ({ bookmark, handleDelete }) => {
     ...(isDragging && { pointerEvents: "none" }),
   };
 
-  useEffect(() => {
+  useEffect(() => { // TO DEBUG
     console.log(isDragging);
   }, [isDragging]);
 
