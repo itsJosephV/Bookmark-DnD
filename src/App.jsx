@@ -16,6 +16,7 @@ function App() {
         id: bookmark.id,
         bmTitle: bookmark.bmTitle,
         bmUrl: bookmark.bmUrl,
+        bmToRead: bookmark.bmToRead,
         randomColor: bookmark.randomColor
         //...bookmark
       },
@@ -23,7 +24,7 @@ function App() {
     setModal(false);
   };
 
-  // console.log(bookmarks);
+  console.log(bookmarks);
 
   const handleDelete = (id) => {
     setBookmarks((prev) => prev.filter((item) => item.id !== id));
@@ -42,7 +43,7 @@ function App() {
           My Bookmark
         </h1>
         <p className="text-zinc-500">
-          Your desktop app to save your favourites sites and links.
+          Your desktop app to save your favorites sites and links.
         </p>
       </div>
       <div className="mb-7">

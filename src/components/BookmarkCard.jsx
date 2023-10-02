@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { cardTitleGenerator } from "../utils/cardTitleGenerator";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { ToReadIcon } from "../Icons";
+ToReadIcon;
 
 const BookmarkCard = ({ bookmark, handleDelete }) => {
   const cardTitle = cardTitleGenerator(bookmark);
@@ -22,12 +24,12 @@ const BookmarkCard = ({ bookmark, handleDelete }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    ...(isDragging && {pointerEvents: 'none'})
+    ...(isDragging && { pointerEvents: "none" }),
   };
 
   useEffect(() => {
-    console.log(isDragging)
-  },[isDragging])
+    console.log(isDragging);
+  }, [isDragging]);
 
   return (
     <div
@@ -40,7 +42,7 @@ const BookmarkCard = ({ bookmark, handleDelete }) => {
       <a
         href={bookmark.bmUrl}
         target="_blank"
-        className="border border-zinc-800 bg-zinc-900 rounded-lg flex flex-row justify-center items-center h-[80px]"
+        className="border border-zinc-800 bg-zinc-900 rounded-lg flex flex-row justify-center items-center h-[80px] relative"
       >
         <p
           className={`text-5xl font-semibold`}
@@ -48,6 +50,11 @@ const BookmarkCard = ({ bookmark, handleDelete }) => {
         >
           {cardTitle}
         </p>
+        {bookmark.bmToRead ? (
+          <div className="absolute top-[3px] right-[3px] p-[1px] rounded-[4px] bg-zinc-600">
+            <ToReadIcon width={".9em"} height={".9em"} fill={"#e4e4e7"} />
+          </div>
+        ) : null}
       </a>
       <a
         role="button"

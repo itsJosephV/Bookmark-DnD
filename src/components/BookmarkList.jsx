@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BookmarkCard from "./BookmarkCard";
 import EmptyList from "./EmptyList";
 import {
@@ -16,11 +17,10 @@ import {
 } from "@dnd-kit/sortable";
 
 const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
-  
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 10,
+        distance: 5,
       },
     })
   );
@@ -37,7 +37,6 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
   return (
     <section>
       <div className="mb-5">
-        <h1 className="text-2xl font-semibold">Your list</h1>
       </div>
       {bookmarks.length > 0 ? (
         <DndContext
