@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import BookmarkCard from "./BookmarkCard";
 import EmptyList from "./EmptyList";
 import {
@@ -25,6 +25,12 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
     })
   );
 
+  const bmIds = useMemo(() => {
+    return bookmarks.map((bm) => bm.id)
+  }, [bookmarks])
+
+  console.log(bmIds)
+
   const handleDragEnd = (e) => {
     const { active, over } = e;
     setBookmarks((bookmarks) => {
@@ -35,8 +41,10 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
   };
 
   return (
-    <section>
-      <div className="mb-5">
+    <section className="mt-10">
+      <div className="mb-4">
+        <h1 className="text-2xl font-semibold">Favourites</h1>
+        {/* <i>info icon here</i> */}
       </div>
       {bookmarks.length > 0 ? (
         <DndContext
@@ -44,7 +52,7 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
         >
-          <SortableContext items={bookmarks} strategy={rectSortingStrategy}>
+          <SortableContext items={bmIds} strategy={rectSortingStrategy}>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-3">
               {bookmarks.map((bookmark) => (
                 <BookmarkCard
