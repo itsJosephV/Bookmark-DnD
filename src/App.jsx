@@ -29,7 +29,8 @@ function App() {
     setBookmarks((prev) => prev.filter((item) => item.id !== id));
     console.log("bookmark deleted", id);
   };
-  console.log(bookmarks);
+
+  //console.log(bookmarks);
 
   return (
     <main className="min-h-screen">
