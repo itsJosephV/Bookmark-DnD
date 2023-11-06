@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BookmarkList from "./components/BookmarkList";
 import BookmarkModal from "./components/BookmarkModal";
 import NavLinks from "./components/NavLinks";
 import { useBookmarksLS } from "./hooks/useBookmarksLS";
 import AddButton from "./components/AddButton";
 import Header from "./components/Header";
+import MobileWarn from "./components/MobileWarn";
 
 function App() {
   const [bookmarks, setBookmarks] = useBookmarksLS("bookmarks", []);
   const [modal, setModal] = useState(false);
+  const [showMobileWarn, setShowMobileWarn] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 480) {
+      setShowMobileWarn(true);
+    }
+  }, [window.innerWidth]);
 
   const addBookmark = (bookmark) => {
     setBookmarks((prev) => [
@@ -48,6 +56,9 @@ function App() {
           modal={modal}
           setModal={setModal}
         />
+        {showMobileWarn && (
+          <MobileWarn />
+        )}
       </div>
     </main>
   );

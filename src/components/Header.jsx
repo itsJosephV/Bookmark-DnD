@@ -12,7 +12,7 @@ const Header = () => {
       </h1>
 
       <p className="text-zinc-500">
-        Your desktop app to save your favorites sites and links.
+        Your desktop app to save your favourites sites and links.
       </p>
     </header>
   );

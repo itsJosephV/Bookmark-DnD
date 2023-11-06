@@ -46,7 +46,7 @@ const BookmarkModal = ({ modal, addBookmark, setModal }) => {
     inputRef?.current?.focus();
   }, [modal]);
 
-  console.log(bookmarkToRead);
+  // console.log(bookmarkToRead);
 
   return modal ? (
     <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-lg flex flex-col justify-center items-center p-5 gap-7">
