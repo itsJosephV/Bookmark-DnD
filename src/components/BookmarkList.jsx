@@ -29,7 +29,7 @@ const BookmarkList = ({ bookmarks, handleDelete, setBookmarks }) => {
     return bookmarks.map((bm) => bm.id)
   }, [bookmarks])
 
-  console.log(bmIds)
+  // console.log(bmIds)
 
   const handleDragEnd = (e) => {
     const { active, over } = e;

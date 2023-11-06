@@ -15,8 +15,18 @@ function App() {
   useEffect(() => {
     if (window.innerWidth <= 480) {
       setShowMobileWarn(true);
+      document.body.style.overflow = "hidden";
     }
+    return () => (document.body.style.overflow = "unset");
   }, [window.innerWidth]);
+
+  useEffect(() => {
+    if (modal) {
+      console.log('its open')
+      document.body.style.overflow = "hidden";
+    }
+    return () => (document.body.style.overflow = "unset");
+  }, [modal]);
 
   const addBookmark = (bookmark) => {
     setBookmarks((prev) => [
@@ -56,9 +66,7 @@ function App() {
           modal={modal}
           setModal={setModal}
         />
-        {showMobileWarn && (
-          <MobileWarn />
-        )}
+        {showMobileWarn && <MobileWarn />}
       </div>
     </main>
   );
